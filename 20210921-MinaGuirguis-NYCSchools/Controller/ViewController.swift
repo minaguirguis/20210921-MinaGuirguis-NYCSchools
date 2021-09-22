@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     let requestURL = "https://data.cityofnewyork.us/resource/s3k6-pzi2.json"
 
@@ -17,9 +17,10 @@ class ViewController: UIViewController, UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        schoolList.delegate = self
+        schoolList.dataSource = self
         loadNYCSchools(url: requestURL)
-        
+        self.schoolList.reloadData()//to refresh after getting data
     }
     
     //Download School list
@@ -46,6 +47,7 @@ class ViewController: UIViewController, UITableViewDataSource {
             }
         }
         dataTask.resume()
+        
     }
     
     
@@ -60,11 +62,19 @@ class ViewController: UIViewController, UITableViewDataSource {
         let school = schools[indexPath.row]
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: SCHOOLCELL_REF) as? SchoolCell {
+            cell.configureCell(school: school)
             
+            return cell
+        } else {
+            return SchoolCell()
         }
         
         
-        return SchoolCell()
+        
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
     }
 
     

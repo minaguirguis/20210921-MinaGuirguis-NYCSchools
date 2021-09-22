@@ -12,6 +12,8 @@ class SchoolCell: UITableViewCell {
     @IBOutlet weak var address: UILabel!
     @IBOutlet weak var borough: UILabel!
     
+    var school: School!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -23,10 +25,12 @@ class SchoolCell: UITableViewCell {
         
     }
     
-    func configureCell(schoolName: String, address: String, borough: String) {
-        self.schoolName.text = schoolName
-        self.address.text = address
-        self.borough.text = borough
+    func configureCell(school: School) {
+        
+        self.school = school
+        self.schoolName.text = school.schoolName
+        self.address.text = school.address
+        self.borough.text = school.borough
     }
 
 }
