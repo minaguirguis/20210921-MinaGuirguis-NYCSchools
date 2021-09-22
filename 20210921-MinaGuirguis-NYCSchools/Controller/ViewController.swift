@@ -17,10 +17,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         schoolList.delegate = self
         schoolList.dataSource = self
+        
+        
         loadNYCSchools(url: requestURL)
-        self.schoolList.reloadData()//to refresh after getting data
+       
     }
     
     //Download School list
@@ -44,8 +47,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                         self.schools.append(newSchool)
                     }
                 }
+                DispatchQueue.main.async {
+                    self.schoolList.reloadData()//to refresh after getting data
+                }
+                
             }
         }
+       
         dataTask.resume()
         
     }
@@ -53,6 +61,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     
     //TableView protocol methods
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return schools.count
     }
@@ -73,9 +88,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
 
     
     
