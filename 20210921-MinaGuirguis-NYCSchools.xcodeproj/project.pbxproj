@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5687ACBC26FB78C7000A9D73 /* SchoolCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5687ACBB26FB78C7000A9D73 /* SchoolCell.swift */; };
+		5687ACBE26FB84C8000A9D73 /* School.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5687ACBD26FB84C8000A9D73 /* School.swift */; };
+		5687ACC126FB918E000A9D73 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5687ACC026FB918E000A9D73 /* Constants.swift */; };
 		56C0678726FAD98E006A2ECF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C0678626FAD98E006A2ECF /* AppDelegate.swift */; };
 		56C0678926FAD98E006A2ECF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C0678826FAD98E006A2ECF /* SceneDelegate.swift */; };
 		56C0678B26FAD98E006A2ECF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C0678A26FAD98E006A2ECF /* ViewController.swift */; };
@@ -35,6 +38,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5687ACBB26FB78C7000A9D73 /* SchoolCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolCell.swift; sourceTree = "<group>"; };
+		5687ACBD26FB84C8000A9D73 /* School.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = School.swift; sourceTree = "<group>"; };
+		5687ACC026FB918E000A9D73 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		56C0678326FAD98E006A2ECF /* 20210921-MinaGuirguis-NYCSchools.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "20210921-MinaGuirguis-NYCSchools.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		56C0678626FAD98E006A2ECF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		56C0678826FAD98E006A2ECF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +82,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5687ACB826FB7880000A9D73 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5687ACBD26FB84C8000A9D73 /* School.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5687ACB926FB788C000A9D73 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				56C0678C26FAD98E006A2ECF /* Main.storyboard */,
+				5687ACBB26FB78C7000A9D73 /* SchoolCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5687ACBA26FB7892000A9D73 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				56C0678A26FAD98E006A2ECF /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		5687ACBF26FB916E000A9D73 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				5687ACC026FB918E000A9D73 /* Constants.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		56C0677A26FAD98E006A2ECF = {
 			isa = PBXGroup;
 			children = (
@@ -99,10 +138,12 @@
 		56C0678526FAD98E006A2ECF /* 20210921-MinaGuirguis-NYCSchools */ = {
 			isa = PBXGroup;
 			children = (
+				5687ACBF26FB916E000A9D73 /* Services */,
+				5687ACBA26FB7892000A9D73 /* Controller */,
+				5687ACB926FB788C000A9D73 /* View */,
+				5687ACB826FB7880000A9D73 /* Model */,
 				56C0678626FAD98E006A2ECF /* AppDelegate.swift */,
 				56C0678826FAD98E006A2ECF /* SceneDelegate.swift */,
-				56C0678A26FAD98E006A2ECF /* ViewController.swift */,
-				56C0678C26FAD98E006A2ECF /* Main.storyboard */,
 				56C0678F26FAD98F006A2ECF /* Assets.xcassets */,
 				56C0679126FAD98F006A2ECF /* LaunchScreen.storyboard */,
 				56C0679426FAD98F006A2ECF /* Info.plist */,
@@ -261,6 +302,9 @@
 				56C0678B26FAD98E006A2ECF /* ViewController.swift in Sources */,
 				56C0678726FAD98E006A2ECF /* AppDelegate.swift in Sources */,
 				56C0678926FAD98E006A2ECF /* SceneDelegate.swift in Sources */,
+				5687ACBE26FB84C8000A9D73 /* School.swift in Sources */,
+				5687ACBC26FB78C7000A9D73 /* SchoolCell.swift in Sources */,
+				5687ACC126FB918E000A9D73 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
