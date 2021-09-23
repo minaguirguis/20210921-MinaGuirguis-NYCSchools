@@ -121,11 +121,23 @@ class SchoolListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
     }
     
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == SCHOOL_DETAILS_REFERENCE {
+            if let scoresVC = segue.destination as? SchoolDetailsVC {
+                if let school = sender as? School {
+                    scoresVC.school = school
+                }
+            }
+        }
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        print(schools[indexPath.row].criticalReadingScore)
+        var school: School!
         
-        performSegue(withIdentifier:SCHOOL_DETAILS_REFERENCE, sender: nil)
+        school = schools[indexPath.row]
+        
+        performSegue(withIdentifier:SCHOOL_DETAILS_REFERENCE, sender: school)
     }
     
 
