@@ -7,10 +7,11 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class SchoolListVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     let requestURL = "https://data.cityofnewyork.us/resource/s3k6-pzi2.json"
-
+    let satResultsUrl = "https://data.cityofnewyork.us/resource/f9bf-2cp4.json"
+    
     var schools = [School]()
     
     @IBOutlet weak var schoolList: UITableView!
@@ -23,13 +24,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         
         loadNYCSchools(url: requestURL)
+        
        
     }
     
     //Download School list
-    
     func loadNYCSchools(url: String) {
-        let urlToRequest = URLRequest(url: URL(string: requestURL)!)
+        let urlToRequest = URLRequest(url: URL(string: url)!)
         
         let dataTask = URLSession.shared.dataTask(with: urlToRequest) { data, response, error in
             if error != nil {
@@ -39,10 +40,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 guard let schoolArr = schoolsResponse as? NSArray else {return}
                 if let schoolsList = schoolArr as? [[String:String]] {
                     for school in schoolsList {
-                        let dbn = school["dbn"]!
-                        let address = school["location"]!
-                        let borough = school["borough"] ?? "Uknown"
-                        let name = school["school_name"]!
+                        let dbn = school[DBN_REFERENCE]!
+                        let address = school[LOCATION_REFERENCE]!
+                        let borough = school[BOROUGH_REFERENCE] ?? "Uknown"
+                        let name = school[SCHOOL_NAME_REFERENCE]!
                         let newSchool = School(schoolName: name, address: address, borough: borough, dbn: dbn)
                         self.schools.append(newSchool)
                     }
@@ -50,6 +51,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 DispatchQueue.main.async {
                     self.schoolList.reloadData()//to refresh after getting data
                 }
+                self.loadSATScores(url: self.satResultsUrl)
                 
             }
         }
@@ -58,6 +60,40 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
     }
     
+
+    func loadSATScores(url: String) {
+        let urlToRequest = URLRequest(url: URL(string: url)!)
+        
+        let dataTask = URLSession.shared.dataTask(with: urlToRequest) { data, response, error in
+            if error != nil {
+                print("DEBUG: There was an error with your request")
+            } else {
+                let scoresResponse = try? JSONSerialization.jsonObject(with: data!, options: .mutableContainers)
+                guard let scoresArr = scoresResponse as? NSArray else {return}
+                if let scoresList = scoresArr as? [[String:String]] {
+                    for score in scoresList {
+                        let dbn = score[DBN_REFERENCE]!
+                        let mathScore = score[SAT_MATH_SCORE]!
+                        let writingScore = score[SAT_WRITING_SCORE]!
+                        let criticalReadingScore = score[SAT_CRITICAL_READING_SCORE]!
+                        print(dbn)
+                        //attaching scores to corresponding schools
+                        for school in self.schools {
+                            if(dbn == school.dbn) {
+                                school.setScores(writingScore: writingScore, mathScore: mathScore, criticalReading: criticalReadingScore)
+                            }
+                        }
+                        
+                    }
+                }
+            }
+           
+        }
+        dataTask.resume()
+        
+    }
+    
+    
     
     
     //TableView protocol methods
@@ -65,8 +101,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return schools.count
@@ -83,9 +117,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         } else {
             return SchoolCell()
         }
+
+    }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        print(schools[indexPath.row].criticalReadingScore)
         
-        
+        performSegue(withIdentifier:SCHOOL_DETAILS_REFERENCE, sender: nil)
     }
     
 
