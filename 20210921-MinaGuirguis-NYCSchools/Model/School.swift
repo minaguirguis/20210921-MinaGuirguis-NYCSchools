@@ -17,7 +17,7 @@ class School {
     private var _mathScore: String!
     private var _criticalReadingScore: String!
     
-    
+    //wrapping variables
     var schoolName: String {
         return _schoolName
     }

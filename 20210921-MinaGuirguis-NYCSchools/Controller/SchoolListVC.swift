@@ -9,9 +9,10 @@ import UIKit
 
 class SchoolListVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    let requestURL = "https://data.cityofnewyork.us/resource/s3k6-pzi2.json"
-    let satResultsUrl = "https://data.cityofnewyork.us/resource/f9bf-2cp4.json"
+    let schoolListRequestUrl = "https://data.cityofnewyork.us/resource/s3k6-pzi2.json"
+    let satResultsRequestUrl = "https://data.cityofnewyork.us/resource/f9bf-2cp4.json"
     
+    //array to store all schools
     var schools = [School]()
     
     @IBOutlet weak var schoolList: UITableView!
@@ -19,16 +20,17 @@ class SchoolListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //setting tableview delegate and data source
         schoolList.delegate = self
         schoolList.dataSource = self
         
         
-        loadNYCSchools(url: requestURL)
+        loadNYCSchools(url: schoolListRequestUrl)
         
        
     }
     
-    //Download School list
+    //Download School list and store in array
     func loadNYCSchools(url: String) {
         let urlToRequest = URLRequest(url: URL(string: url)!)
         
@@ -51,7 +53,7 @@ class SchoolListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
                 DispatchQueue.main.async {
                     self.schoolList.reloadData()//to refresh after getting data
                 }
-                self.loadSATScores(url: self.satResultsUrl)
+                self.loadSATScores(url: self.satResultsRequestUrl)
                 
             }
         }
@@ -60,7 +62,8 @@ class SchoolListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
         
     }
     
-
+    
+    //get SAT scores and attach to corresponding school
     func loadSATScores(url: String) {
         let urlToRequest = URLRequest(url: URL(string: url)!)
         
@@ -90,7 +93,6 @@ class SchoolListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
            
         }
         dataTask.resume()
-        
     }
     
     

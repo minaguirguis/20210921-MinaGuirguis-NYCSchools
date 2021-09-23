@@ -121,7 +121,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reading Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JbG-gL-4aC">
-                                <rect key="frame" x="247" y="250" width="123" height="23"/>
+                                <rect key="frame" x="223" y="250" width="123" height="23"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -149,11 +149,18 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Writing Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ip5-CR-TqY">
-                                <rect key="frame" x="247" y="396" width="114.5" height="23"/>
+                                <rect key="frame" x="231.5" y="396" width="114.5" height="23"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wDJ-Lf-Ztz">
+                                <rect key="frame" x="30" y="27" width="43" height="30"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="backBtnTapped:" destination="SHm-Rg-8q4" eventType="touchUpInside" id="IWn-dn-Qwg"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="School Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ig8-Gq-fRg">
                                 <rect key="frame" x="20" y="65" width="374" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -164,18 +171,20 @@
                         <viewLayoutGuide key="safeArea" id="ELd-eJ-jxf"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="wDJ-Lf-Ztz" firstAttribute="top" secondItem="ELd-eJ-jxf" secondAttribute="top" constant="27" id="0AX-Kt-MZQ"/>
+                            <constraint firstItem="ELd-eJ-jxf" firstAttribute="trailing" secondItem="lVy-iU-LfJ" secondAttribute="trailing" constant="68" id="1Pr-cg-c7C"/>
+                            <constraint firstItem="ELd-eJ-jxf" firstAttribute="trailing" secondItem="Ip5-CR-TqY" secondAttribute="trailing" constant="68" id="4Tq-jP-27I"/>
                             <constraint firstItem="pOy-qR-OV3" firstAttribute="top" secondItem="ig8-Gq-fRg" secondAttribute="bottom" constant="86" id="5va-Yd-swN"/>
+                            <constraint firstItem="wDJ-Lf-Ztz" firstAttribute="leading" secondItem="ELd-eJ-jxf" secondAttribute="leading" constant="30" id="CYQ-eG-8Ix"/>
+                            <constraint firstItem="ELd-eJ-jxf" firstAttribute="trailing" secondItem="JbG-gL-4aC" secondAttribute="trailing" constant="68" id="DMh-jt-34n"/>
                             <constraint firstItem="ig8-Gq-fRg" firstAttribute="leading" secondItem="ELd-eJ-jxf" secondAttribute="leading" constant="20" id="GKx-q6-lAa"/>
                             <constraint firstItem="3lE-Lb-HPc" firstAttribute="leading" secondItem="ELd-eJ-jxf" secondAttribute="leading" constant="20" id="JNn-bV-8PZ"/>
                             <constraint firstItem="kfl-nk-0yK" firstAttribute="top" secondItem="pOy-qR-OV3" secondAttribute="bottom" constant="48" id="JVk-fw-xmO"/>
                             <constraint firstItem="lVy-iU-LfJ" firstAttribute="top" secondItem="JbG-gL-4aC" secondAttribute="bottom" constant="48" id="dhl-ls-eZe"/>
-                            <constraint firstItem="ELd-eJ-jxf" firstAttribute="trailing" secondItem="Ip5-CR-TqY" secondAttribute="trailing" constant="52.5" id="eOu-Y5-vI2"/>
                             <constraint firstItem="JbG-gL-4aC" firstAttribute="top" secondItem="pOy-qR-OV3" secondAttribute="bottom" constant="52" id="een-e9-I5c"/>
-                            <constraint firstItem="ELd-eJ-jxf" firstAttribute="trailing" secondItem="lVy-iU-LfJ" secondAttribute="trailing" constant="68" id="gda-g5-VNw"/>
                             <constraint firstItem="3lE-Lb-HPc" firstAttribute="top" secondItem="dCV-1T-q6d" secondAttribute="bottom" constant="52" id="mBy-u2-MOM"/>
                             <constraint firstItem="dCV-1T-q6d" firstAttribute="top" secondItem="kfl-nk-0yK" secondAttribute="bottom" constant="52" id="qOw-Xj-mun"/>
                             <constraint firstItem="dCV-1T-q6d" firstAttribute="leading" secondItem="ELd-eJ-jxf" secondAttribute="leading" constant="20" id="rM7-ID-0QC"/>
-                            <constraint firstItem="ELd-eJ-jxf" firstAttribute="trailing" secondItem="JbG-gL-4aC" secondAttribute="trailing" constant="44" id="u08-M5-dXa"/>
                             <constraint firstItem="Ip5-CR-TqY" firstAttribute="top" secondItem="lVy-iU-LfJ" secondAttribute="bottom" constant="52" id="ulc-zc-aoF"/>
                             <constraint firstItem="ig8-Gq-fRg" firstAttribute="top" secondItem="ELd-eJ-jxf" secondAttribute="top" constant="65" id="urh-WO-Poa"/>
                             <constraint firstItem="kfl-nk-0yK" firstAttribute="leading" secondItem="ELd-eJ-jxf" secondAttribute="leading" constant="20" id="yTS-Ph-toF"/>

@@ -21,12 +21,10 @@ class SchoolCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        
     }
     
+    
     func configureCell(school: School) {
-        
         self.school = school
         self.schoolName.text = school.schoolName
         self.address.text = school.address
